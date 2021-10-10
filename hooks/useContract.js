@@ -41,3 +41,7 @@ export const useCustomeContract = () => {
   return useMemo(() => getCustomeContract(library.getSigner()), [library])
 }
 
+export const useMarketplaceContract = () => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getMarketplaceContract(library.getSigner()), [library])
+}

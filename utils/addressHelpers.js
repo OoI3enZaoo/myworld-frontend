@@ -19,3 +19,7 @@ export const getGachaponAddress = () => {
 export const getCustumeAddress = () => {
   return getAddress(addresses.custume)
 }
+
+export const getMarketplaceAddress = () => {
+  return getAddress(addresses.marketplace)
+}

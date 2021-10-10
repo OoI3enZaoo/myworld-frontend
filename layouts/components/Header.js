@@ -122,7 +122,6 @@ const Hammerber = styled('div')`
 
 const Header = () => {
   const router = useRouter()
-  console.log('router', router)
   const { account } = useWeb3React()
   const { login, logout } = useAuth()
 
@@ -133,7 +132,7 @@ const Header = () => {
       href: '/'
     },
     {
-      name: 'MarketPlace',
+      name: 'Marketplace',
       key: 'marketplace',
       href: '/marketplace'
     },

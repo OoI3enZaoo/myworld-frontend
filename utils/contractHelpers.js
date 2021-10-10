@@ -1,9 +1,10 @@
 import { ethers } from 'ethers'
-import { getGachaponAddress, getCustumeAddress } from 'utils/addressHelpers'
+import { getGachaponAddress, getCustumeAddress, getMarketplaceAddress } from 'utils/addressHelpers'
 import gachaponAbi from 'config/abi/gachapon.json'
 import { simpleRpcProvider } from 'utils/providers'
 import bep20Abi from 'config/abi/erc20.json'
 import custumeAbi from 'config/abi/custume.json'
+import marketplaceAbi from 'config/abi/marketplace.json'
 
 const getContract = (abi, address, signer) => {
   return new ethers.Contract(address, abi, signer || simpleRpcProvider)
@@ -20,3 +21,8 @@ export const getGachaponContract = (signer) => {
 export const getCustomeContract = (signer) => {
   return getContract(custumeAbi, getCustumeAddress(), signer)
 }
+
+export const getMarketplaceContract = (signer) => {
+  return getContract(marketplaceAbi, getMarketplaceAddress(), signer)
+}
+
