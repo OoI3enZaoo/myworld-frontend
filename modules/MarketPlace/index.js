@@ -16,8 +16,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const Wrapper = styled('div')`
   width: 100%;
-  height: calc(100vh - 56px);
-  overflow-y: auto;
+  min-height: calc(100vh - 56px);
 `
 
 const CardContent = styled('div')`
@@ -100,7 +99,7 @@ const MarketPlaceModule = () => {
                 <Row gutter={[24, 24]} style={{ marginTop: '34px' }}>
                   {
                     custumes.map((item, index) => (
-                      <Col xs={8} md={6} lg={4} key={index}>
+                      <Col xs={12} sm={8} md={6} lg={4} key={index}>
                         <CustumCard>
                           <CardContent>
                             <img src={item.appearanceSrc} width='150px' />
