@@ -16,7 +16,7 @@ export default {
     4: '0xE634735cEB3CD75117Fd3a6384b3C76380890E6d'
   },
   multiCall: {
-    56: '0xfF6FD90A470Aaa0c1B8A54681746b07AcdFedc9B',
-    97: '0x8F3273Fb89B075b1645095ABaC6ed17B2d4Bc576',
+    1: '0xeefba1e63905ef1d7acba5a8513c70307c1ce441',
+    4: '0x42ad527de7d4e9d9d011ac45b31d8551f8fe9821',
   }
 }
