@@ -35,6 +35,9 @@ const Container = styled('div')`
   padding: 0;
 `
 
+const CustumCard = styled(Card)`
+  cursor: pointer;
+`
 
 const MarketPlaceModule = () => {
   const marketplaceContract = useMarketplaceContract()
@@ -86,35 +89,38 @@ const MarketPlaceModule = () => {
   }
   return (
     <MainLayout>
-      <Container>
-        <Content style={{ margin: '24px 16px 0' }}>
-          {
-            isLoading ? 
-            <Skeleton rows={30} /> 
-            :
-              <Row gutter={[24, 24]} style={{ marginTop: '34px' }}>
-                {
-                  custumes.map((item, index) => (
-                    <Col xs={8} md={6} lg={4} key={index}>
-                      <Card>
-                        <CardContent>
-                          <img src={item.appearanceSrc} width='150px' />
-                          <Text mt='16px' bold>Costume: #{item.tokenId}</Text>
-                          <Balance
-                            mt='8px'
-                            value={item.price}
-                            unit=' MOON'
-                            decimal={2}
-                          />
-                        </CardContent>
-                      </Card>
-                    </Col>
-                  ))
-                }
-              </Row>
-          }
-        </Content>
-      </Container>
+      <Wrapper>
+
+        <Container>
+          <Content style={{ margin: '24px 16px 0' }}>
+            {
+              isLoading ? 
+              <Skeleton paragraph={{ rows: 12 }} /> 
+              :
+                <Row gutter={[24, 24]} style={{ marginTop: '34px' }}>
+                  {
+                    custumes.map((item, index) => (
+                      <Col xs={8} md={6} lg={4} key={index}>
+                        <CustumCard>
+                          <CardContent>
+                            <img src={item.appearanceSrc} width='150px' />
+                            <Text mt='16px' bold>Costume: #{item.tokenId}</Text>
+                            <Balance
+                              mt='8px'
+                              value={item.price}
+                              unit=' MOON'
+                              decimals={2}
+                            />
+                          </CardContent>
+                        </CustumCard>
+                      </Col>
+                    ))
+                  }
+                </Row>
+            }
+          </Content>
+        </Container>
+      </Wrapper>
     </MainLayout>
   )
 }

@@ -23,7 +23,3 @@ export const getCustumeAddress = () => {
 export const getMarketplaceAddress = () => {
   return getAddress(addresses.marketplace)
 }
-
-export const getMulticallAddress = () => {
-  return getAddress(addresses.multiCall)
-}
