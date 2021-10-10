@@ -160,24 +160,29 @@ const GachaponModule = () => {
                   </GachaItem>
 
                 }
-                <Button
-                  style={{ width: '150px' }}
-                  size='large'
-                  loading={isApproving || isConfirming}
-                  onClick={() => {
-                    if (account) {
-                      if (isApproved) {
-                        handleConfirm()
-                      } else {
-                        handleApprove()
-                      }
-                    } else {
-                      login()
-                    }
-                  }}
-                >
-                  {!account ? 'Connect Wallet' : isApproved ? 'purchase' : 'Enable'}
-                </Button>
+                {
+                  !account || !isApproved ?
+                    <Button
+                      style={{ width: '150px' }}
+                      size='large'
+                      loading={isApproving || isConfirming}
+                      onClick={() => {
+                        if (account) {
+                          if (isApproved) {
+                            handleConfirm()
+                          } else {
+                            handleApprove()
+                          }
+                        } else {
+                          login()
+                        }
+                      }}
+                    >
+                      {!account ? 'Connect Wallet' : isApproved ? 'purchase' : 'Enable'}
+                    </Button>
+                    :
+                    <img src='/images/bt_gachapon.png' style={{ cursor: 'pointer' }} onClick={() => handleConfirm()} />
+                }
               </GachaWrap>
             </GachaContainer>
           </Wrap>
