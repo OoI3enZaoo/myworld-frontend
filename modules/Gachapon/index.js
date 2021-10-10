@@ -9,7 +9,7 @@ import { getMoonAddress } from 'utils/addressHelpers'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { ethers } from 'ethers'
 import BigNumbers from 'bignumber.js'
-import { ethersToSerializedBigNumber } from 'utils/bigNumber'
+import { ethersToSerializedBigNumber, ethersToBigNumber } from 'utils/bigNumber'
 import { useState } from 'react'
 import { maxWidth } from 'utils/breakpoint'
 
