@@ -28,6 +28,14 @@ const CardContent = styled('div')`
 `
 
 
+const Container = styled('div')`
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+`
+
+
 const MarketPlaceModule = () => {
   const marketplaceContract = useMarketplaceContract()
   const custumeContract = useCustomeContract()
@@ -78,57 +86,35 @@ const MarketPlaceModule = () => {
   }
   return (
     <MainLayout>
-      <Layout>
-        <Sider
-          style={{ backgroundColor: 'white', borderRight: '1px solid #dcdcdc' }}
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={broken => {
-            console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-          }}
-        >
-          <Wrapper>
-          <div>hello</div>
-            </Wrapper>
-        </Sider>
-        <Layout>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <Tabs defaultActiveKey="1"  size='large'>
-              <TabPane tab="Marketplace" key="1">
-              {
-                isLoading ? 
-                <Skeleton /> 
-                :
-                  <Row gutter={[24, 24]}>
-                    {
-                      custumes.map((item, index) => (
-                        <Col xs={12} lg={8} key={index}>
-                          <Card>
-                            <CardContent>
-                              <img src={item.appearanceSrc} width='150px' />
-                              <Balance
-                                value={item.price}
-                                unit=' MOON'
-                                decimal={2}
-                              />
-                            </CardContent>
-                          </Card>
-                        </Col>
-                      ))
-                    }
-                  </Row>
-              }
-              </TabPane>
-              <TabPane tab="History" key="2">
-                history page
-              </TabPane>
-            </Tabs>
-          </Content>
-        </Layout>
-      </Layout>
+      <Container>
+        <Content style={{ margin: '24px 16px 0' }}>
+          {
+            isLoading ? 
+            <Skeleton rows={30} /> 
+            :
+              <Row gutter={[24, 24]} style={{ marginTop: '34px' }}>
+                {
+                  custumes.map((item, index) => (
+                    <Col xs={8} md={6} lg={4} key={index}>
+                      <Card>
+                        <CardContent>
+                          <img src={item.appearanceSrc} width='150px' />
+                          <Text mt='16px' bold>Costume: #{item.tokenId}</Text>
+                          <Balance
+                            mt='8px'
+                            value={item.price}
+                            unit=' MOON'
+                            decimal={2}
+                          />
+                        </CardContent>
+                      </Card>
+                    </Col>
+                  ))
+                }
+              </Row>
+          }
+        </Content>
+      </Container>
     </MainLayout>
   )
 }
