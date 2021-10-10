@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import {
   getBep20Contract,
-  // getSpinnerContract,
+  getCustomeContract,
   getGachaponContract
 } from 'utils/contractHelpers'
 import ERC20_ABI from 'config/abi/erc20.json'
@@ -12,13 +12,6 @@ export const useERC20 = (address) => {
   const { library } = useActiveWeb3React()
   return useMemo(() => getBep20Contract(address, library.getSigner()), [address, library])
 }
-
-// export const useSpinnerContract = () => {
-//   const { library } = useActiveWeb3React()
-//   return useMemo(() => getSpinnerContract(library.getSigner()), [library])
-// }
-
-
 
 function useContract(address, ABI, withSignerIfPossible = true) {
   const { library, account } = useActiveWeb3React()
@@ -42,3 +35,9 @@ export const useGachaponContract = () => {
   const { library } = useActiveWeb3React()
   return useMemo(() => getGachaponContract(library.getSigner()), [library])
 }
+
+export const useCustomeContract = () => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getCustomeContract(library.getSigner()), [library])
+}
+

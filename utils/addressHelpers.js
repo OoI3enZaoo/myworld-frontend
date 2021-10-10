@@ -15,3 +15,7 @@ export const getMoonAddress = () => {
 export const getGachaponAddress = () => {
   return getAddress(addresses.gachapon)
 }
+
+export const getCustumeAddress = () => {
+  return getAddress(addresses.custume)
+}
