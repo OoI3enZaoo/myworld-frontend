@@ -146,18 +146,20 @@ const GachaponModule = () => {
           <Wrap>
             <GachaContainer>
               <GachaWrap>
-                <GachaHeader>
+                {/* <GachaHeader>
                   <img src='/images/ic_header_pack.svg' style={{ height: '5rem' }} />
-                </GachaHeader>
+                </GachaHeader> */}
                 {
                   custome ?
                     <img src={`/images/costumes/${custome}.png`} style={{ margin: '60px 0' }} />
                   :
-                  <GachaItem>
-                    <GachaItemContent>
 
-                    </GachaItemContent>
-                  </GachaItem>
+                  <img src='/images/gachapon.png' width='400px' />
+                  // <GachaItem>
+                  //   <GachaItemContent>
+
+                  //   </GachaItemContent>
+                  // </GachaItem>
 
                 }
                 {
