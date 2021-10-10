@@ -160,11 +160,11 @@ const Header = () => {
       key: 'gachapon',
       href: '/gachapon'
     },
-    {
-      name: 'My Account',
-      key: 'myaccount',
-      href: '/account'
-    }
+    // {
+    //   name: 'My Account',
+    //   key: 'myaccount',
+    //   href: '/account'
+    // }
   ]
   const [menuActive, setMenuActive] = useState(false)
   return (
