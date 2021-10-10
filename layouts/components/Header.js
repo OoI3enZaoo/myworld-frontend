@@ -9,14 +9,14 @@ import useAuth from 'hooks/useAuth'
 
 const NavBar = styled('div')`
   height: 56px;
-  background-color: #945745;
-  background-image: url(/images/bg_navigate_desktop.svg);
+  background-color: #3c9cb4;
+  background-image: url(/images/bg_navigate_desktop.png);
   background-repeat: repeat;
   background-size: cover;
   background-position: top;
-  box-shadow: 0 1px 20px #764839;
+  box-shadow: 0 1px 20px #3c9cb4;
   justify-content: center;
-  border-bottom: 4px solid #764839;
+  border-bottom: 4px solid #3c9cb4;
   display: flex;
 `
 
@@ -57,7 +57,7 @@ const Container = styled('div')`
   ${maxWidth.sm`
     width: 250px;
     height: 100%;
-    background-color: #945745;
+    background-color: #3c9cb4;
     transition: all .5s ease-in-out;
     background: url(/images/bg_navigate.png);
   `}
