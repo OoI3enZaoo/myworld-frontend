@@ -100,6 +100,7 @@ const GachaponModule = () => {
           console.log('gachaponContract.address', gachaponContract.address)
           console.log('account', account)
           const response = await moonTokenContract.allowance(account, gachaponContract.address)
+          console.log('onrequiredApproval', ethersToSerializedBigNumber(response))
           const currentAllowance = ethersToBigNumber(response)
           return currentAllowance.gt(0)
         } catch (error) {
@@ -110,14 +111,14 @@ const GachaponModule = () => {
         console.log('moonTokenContract', moonTokenContract)
         console.log('gachaponContract.address', gachaponContract)
         // 1000000000000000000000000
-        return moonTokenContract.approve(gachaponContract.address, '1000000000000000000000000')
+        return moonTokenContract.approve(gachaponContract.address, ethers.constants.MaxUint256)
       },
       onApproveSuccess: async () => {
         message.success('Contract approved')
       },
       onConfirm: async () => {
         console.log('onConfirm')
-        return gachaponContract.purchaseTicket()
+        return gachaponContract.purchaseTicket({ gasLimit: 300000 })
       },
       onSuccess: async (response) => {
         // spin winwheel
