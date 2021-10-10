@@ -108,7 +108,7 @@ const MarketPlaceModule = () => {
                             <Balance
                               mt='8px'
                               value={item.price}
-                              unit=' MOON'
+                              unit=' $MOON'
                               decimals={2}
                             />
                           </CardContent>

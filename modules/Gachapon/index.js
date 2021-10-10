@@ -181,7 +181,7 @@ const GachaponModule = () => {
                       {!account ? 'Connect Wallet' : isApproved ? 'purchase' : 'Enable'}
                     </Button>
                     :
-                    <img src='/images/bt_gachapon.png' style={{ cursor: 'pointer' }} onClick={() => handleConfirm()} />
+                    <img src='/images/bt_gachapon.png' style={{ cursor: 'pointer', marginTop: '32px' }} onClick={() => handleConfirm()} width='200px' />
                 }
               </GachaWrap>
             </GachaContainer>
