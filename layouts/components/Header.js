@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Button } from 'antd'
 import { maxWidth } from 'utils/breakpoint'
-import { AlignRightOutlined } from '@ant-design/icons'
+import { AlignRightOutlined, CloseOutlined } from '@ant-design/icons'
 import { useWeb3React } from '@web3-react/core'
 import useAuth from 'hooks/useAuth'
+import { useState } from 'react'
 
 const NavBar = styled('div')`
   height: 56px;
@@ -37,16 +38,29 @@ const MenuWrapper = styled('div')`
   align-items: center;
   width: 100%;
   ${maxWidth.sm`
-    width: 100%;
-    top: 53px;
-    padding: 0;
-    position: absolute;
-    z-index: 100;
-    height: calc(100vh - 53px);
-    background-color: rgba(0,0,0,.15);
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
+    ${props => props.menuActive === true ?`
+      width: 100%;
+      top: 53px;
+      padding: 0;
+      position: absolute;
+      z-index: 100;
+      height: calc(100vh - 53px);
+      background-color: rgba(0,0,0,.15);
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+    ` : `
+        width: unset;
+        top: 53px;
+        padding: 0;
+        position: absolute;
+        z-index: 100;
+        height: calc(100vh - 53px);
+        background-color: rgba(0,0,0,.15);
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+    `}
   `}
 `
 
@@ -55,11 +69,16 @@ const Container = styled('div')`
   display: flex;
   width: 100%;
   ${maxWidth.sm`
-    width: 250px;
+    
     height: 100%;
     background-color: #3c9cb4;
     transition: all .5s ease-in-out;
     background: url(/images/bg_navigate.png);
+    ${props => props.menuActive === true ? `
+      width: 250px;
+    ` : `
+      width: 0;
+    `}
   `}
 `
 
@@ -147,14 +166,15 @@ const Header = () => {
       href: '/account'
     }
   ]
+  const [menuActive, setMenuActive] = useState(false)
   return (
     <NavBar>
       <Wrapper>
         {/* <Logo>
           Moon
         </Logo> */}
-        <MenuWrapper>
-          <Container>
+        <MenuWrapper menuActive={menuActive}>
+          <Container menuActive={menuActive}>
             <Menus>
               {
                 menus.map((item, index) => (
@@ -182,8 +202,13 @@ const Header = () => {
             </Menus>
           </Container>
         </MenuWrapper>
-        <Hammerber>
-          <AlignRightOutlined />
+        <Hammerber onClick={() => setMenuActive(!menuActive)}>
+          {
+            menuActive ?
+            <CloseOutlined style={{ color: 'white' }} /> 
+            :
+              <AlignRightOutlined  style={{ color: 'white' }} />
+          }
         </Hammerber>
       </Wrapper>
     </NavBar>
