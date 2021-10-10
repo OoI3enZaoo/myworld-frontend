@@ -101,7 +101,6 @@ const useApproveConfirmTransaction = ({
           onSuccess(receipt)
         }
       } catch (error) {
-        console.log('error from confirm', error)
         dispatch({ type: 'confirm_error' })
         message.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
       }

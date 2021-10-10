@@ -41,7 +41,6 @@ const CustumCard = styled(Card)`
 const MarketPlaceModule = () => {
   const marketplaceContract = useMarketplaceContract()
   const custumeContract = useCustomeContract()
-  console.log('marketplaceContract', marketplaceContract)
   const [custumes, setCustumes] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -52,18 +51,13 @@ const MarketPlaceModule = () => {
   const fetchCustumes = async () => {
     try {
       setIsLoading(true)
-      console.log('marketplaceContract.address', marketplaceContract.address)
       let numberOfItems = await marketplaceContract.sizeOfItems(custumeContract.address)
-      console.log('numberOfItems', numberOfItems)
       const items = ethersToSerializedBigNumber(numberOfItems)
-      console.log('items', items)
 
       let _custumes = []
       for (let i = 0; i < items; i++) {
         let item = await marketplaceContract.itemByIndex(custumeContract.address, i);
-        console.log(item)
         const tokenId = ethersToSerializedBigNumber(new BigNumbers(item.tokenId.toString()))
-        console.log('tokenId', tokenId)
         let priceRes = await marketplaceContract.priceOf(custumeContract.address, tokenId)
         const price = ethersToSerializedBigNumber(new BigNumbers(priceRes.toString()))
         let appearanceRes = await custumeContract.appearanceOf(tokenId)
@@ -81,7 +75,6 @@ const MarketPlaceModule = () => {
      
       // setCustumes()
     } catch (error) {
-      console.log('hello', error)
     } finally {
       setIsLoading(false)
     }

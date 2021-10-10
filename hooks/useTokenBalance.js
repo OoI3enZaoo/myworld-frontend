@@ -21,10 +21,7 @@ const useTokenBalance = (tokenAddress) => {
   const fetchBalance = async () => {
     try {
       const contract = getBep20Contract(tokenAddress, library)
-      console.log('contract', contract)
-      console.log('tokenAddress', tokenAddress)
       const res = await contract.balanceOf(account)
-      console.log('fetchBalance', res)
       setBalanceState({ balance: new BigNumber(res.toString()), fetchStatus: SUCCESS })
     } catch (e) {
       setBalanceState((prev) => ({

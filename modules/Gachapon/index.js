@@ -91,17 +91,11 @@ const GachaponModule = () => {
   const moonTokenContract = useERC20(getMoonAddress())
   const [custome, setCustume] = useState(null)
 
-  console.log('custumeContract', custumeContract)
-  
   const { isApproving, isApproved, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          console.log('moonTokenContract', moonTokenContract)
-          console.log('gachaponContract.address', gachaponContract.address)
-          console.log('account', account)
           const response = await moonTokenContract.allowance(account, gachaponContract.address)
-          console.log('onrequiredApproval', ethersToSerializedBigNumber(response))
           const currentAllowance = ethersToBigNumber(response)
           return currentAllowance.gt(0)
         } catch (error) {
@@ -109,8 +103,6 @@ const GachaponModule = () => {
         }
       },
       onApprove: () => {
-        console.log('moonTokenContract', moonTokenContract)
-        console.log('gachaponContract.address', gachaponContract)
         // 1000000000000000000000000
         return moonTokenContract.approve(gachaponContract.address, ethers.constants.MaxUint256)
       },
@@ -118,27 +110,20 @@ const GachaponModule = () => {
         message.success('Contract approved')
       },
       onConfirm: async () => {
-        console.log('onConfirm')
         return gachaponContract.purchaseTicket({ gasLimit: 300000 })
       },
       onSuccess: async (response) => {
         // spin winwheel
-        console.log('onSuccess')
-        console.log('response', response)
         const tokenIdBigNumber = new BigNumbers(response.events[3].args.tokenId.toString())
         const tokenId = ethersToSerializedBigNumber(tokenIdBigNumber)
-        console.log('tokenId', tokenId)
         const appearanceOfBigNumber = await custumeContract.appearanceOf(tokenId)
-        console.log('appearanceOfBigNumber', appearanceOfBigNumber)
         const appearanceOf = ethersToSerializedBigNumber(new BigNumbers(appearanceOfBigNumber.toString()))
-        console.log('appearanceOf', appearanceOf)
         setCustume(appearanceOf)
         // return result
       },
       contract: moonTokenContract
     })
 
-    console.log('isApproved', isApproved)
   return (
     <MainLayout>
       <Wrapper>

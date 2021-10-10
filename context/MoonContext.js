@@ -18,10 +18,7 @@ export const MoonProvider = ({ children }) => {
   const fetchBalance = useCallback(async () => {
     try {
       if (account) {
-        console.log('contract', contract)
-        console.log('account', account)
         const res = await contract.balanceOf(account)
-        console.log('res', res)
         setBalance(new BigNumber(res.toString()))
         return new BigNumber(res.toString())
       }

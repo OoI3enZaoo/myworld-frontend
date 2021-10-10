@@ -28,12 +28,10 @@ const useAuth = () => {
     async (connectorID = ConnectorNames.Injected) => {
       const connector = connectorsByName[connectorID]
       if (connector) {
-        console.log('injected', injected)
         window.localStorage.setItem(connectorLocalStorageKey, connectorID)
         await activate(injected)
         await activate(injected, async (error) => {
           if (error instanceof UnsupportedChainIdError) {
-            console.log('should setup network')
             const hasSetup = await setupNetwork()
             if (hasSetup) {
               activate(connector)

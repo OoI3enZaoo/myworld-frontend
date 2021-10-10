@@ -15,7 +15,6 @@ export const setupNetwork = async () => {
   const provider = window.ethereum
   if (provider) {
     const chainId = parseInt(publicRuntimeConfig.REACT_APP_CHAIN_ID, 10)
-    console.log('chainIda', chainId)
     try {
       await provider.request({
         method: 'wallet_switchEthereumChain',
