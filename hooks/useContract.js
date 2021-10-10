@@ -3,7 +3,8 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import {
   getBep20Contract,
   getCustomeContract,
-  getGachaponContract
+  getGachaponContract,
+  getMarketplaceContract
 } from 'utils/contractHelpers'
 import ERC20_ABI from 'config/abi/erc20.json'
 import { getContract } from 'utils'

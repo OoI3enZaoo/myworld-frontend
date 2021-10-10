@@ -11,10 +11,11 @@ import { ethers } from 'ethers'
 import BigNumbers from 'bignumber.js'
 import { ethersToSerializedBigNumber } from 'utils/bigNumber'
 import { useState } from 'react'
+import { maxWidth } from 'utils/breakpoint'
 
 const Wrapper = styled('div')`
   width: 100%;
-  height: calc(100vh - 56px);
+  height: 120vh;
   overflow-y: auto;
 `
 
