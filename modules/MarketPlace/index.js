@@ -1,11 +1,11 @@
 import MainLayout from 'layouts'
 
-const GachaponModule = () => {
+const MarketPlaceModule = () => {
   return (
     <MainLayout>
-      hello 
+      MarketPlaceModule 
     </MainLayout>
   )
 }
 
-export default GachaponModule
+export default MarketPlaceModule
