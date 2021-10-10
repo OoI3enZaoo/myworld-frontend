@@ -52,13 +52,13 @@ const MenuWrapper = styled('div')`
     ` : `
         width: unset;
         top: 53px;
+        display: none;
         padding: 0;
         position: absolute;
         z-index: 100;
         height: calc(100vh - 53px);
         background-color: rgba(0,0,0,.15);
         right: 0;
-        display: flex;
         justify-content: flex-end;
     `}
   `}
