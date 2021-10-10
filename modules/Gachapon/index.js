@@ -165,7 +165,7 @@ const GachaponModule = () => {
                 {
                   !account || !isApproved ?
                     <Button
-                      style={{ width: '150px' }}
+                      style={{ width: '150px', marginTop: '30px' }}
                       size='large'
                       loading={isApproving || isConfirming}
                       onClick={() => {
